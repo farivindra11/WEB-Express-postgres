@@ -3,7 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const { Pool} = require('pg')
+const { Pool } = require('pg')
 
 const pool = new Pool({
   user: 'fariv',
