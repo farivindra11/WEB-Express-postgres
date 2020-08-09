@@ -10,11 +10,119 @@
 </head>
 
 <body>
+  <!-- container -->
   <div class="container">
+
+  <!-- Add Modal Start-->
+
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" aria-labelledby="myExtraLargeModalLabel"
+      aria-hidden="true">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModalLabel" text-align:center>Add New Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> <!-- Modal header-->
+
+        <div class="modal-body">
+          <form id="addForm">
+            <div class="row">
+              <div class="col-2">
+                <div class="form-check">
+                  <label class="form-check-label" for="string">
+                    String
+                  </label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="addString" placeholder="String" name="string">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2">
+                <div class="form-check">
+                  <label class="form-check-label" for="integer">
+                    Integer
+                  </label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <input type="number" class="form-control" id="addInteger" placeholder="Integer" name="integer">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2">
+                <div class="form-check">
+                  <label class="form-check-label" for="float">
+                    Float
+                  </label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <input type="number" step="0.01" class="form-control" id="addFloat" placeholder="Float" name="float">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2">
+                <div class="form-check">
+                  <label class="form-check-label" for="date">
+                    Date
+                  </label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <input type="date" class="form-control" id="addDate" name="date">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2">
+                <div class="form-check">
+                  <label class="form-check-label" for="modalBoolean">
+                    Boolean
+                  </label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <select class="custom-select custom-select" id="addBoolean" class="form-control" name="boolean">
+                    <option selected disabled> choose the boolean</option>
+                    <option class="form-control" value="true">True</option>
+                    <option class="form-control" value="false">False</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer btn-add">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+          <button type="submit" id="submit-data" class="btn btn-primary btn-save" dataid=""
+            data-dismiss="modal">Submit</button>
+        </div>
+      </div> <!-- modal content-->
+    </div>
+  </div>
+  <!-- Add Modal End -->
+
+
     <div class="card">
       <div class="card-body">
         <h1 class="card-title">BREAD(Browse, Read, Edit, Add, Delete)</h1>
         <h3 class="card-title">Filters</h3>
+
+        <!-- form -->
         <form>
           <div class="form-group row">
             <label for="id" class="col-sm-2 col-form-label">
@@ -86,9 +194,11 @@
             </div>
           </div>
         </form>
+        <!-- end form -->
       </div>
     </div>
 
+    <!-- table -->
     <div class="card2">
       <div class="card-body tb">
         <div class="table">
@@ -104,12 +214,13 @@
                 <th scope="col">Action</th>
               </tr>
             </thead>
-
             <tbody>
             </tbody>
-
           </table>
+          <!-- end table -->
 
+          <!-- pagination -->
+          <div class="pagination">
           <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -117,54 +228,24 @@
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
           </ul>
+        </div>
+          <!-- end pagination -->
 
-          <div class="add">
-            <a href="add" class="btn btn-primary" data-toggle="modal" data-target="#tambah">Add</a>
+          <!-- <div class="add">
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add</a>
           </div>
-          
+           -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add</button>
 
         </div>
       </div>
     </div>
-
   </div>
+  <!-- end container -->
 
-  <script type="text/javascript">
-    const API_URL = 'http://localhost:3000/api/'
-
-    $(document).ready(() => {
-      loadData();
-    })
-
-    const loadData = () => {
-      $.ajax({
-        method: "GET",
-        url: `${API_URL}bread`
-      })
-        .done(function (data) {
-          let html = '';
-          data.forEach(item => {
-            html += ` <tr>
-                <td>${item.id}</td>
-                <td>${item.string}</td>
-                <td>${item.integer}</td>
-                <td>${item.float}</td>
-                <td>${moment(item.date).format('YYYY-MM-DD')}</td>
-                <td>${item.boolean}</td>
-                <td>
-                  <a href="#" class="btn btn-success">Edit</a>
-                  <a href="#" class="btn btn-danger">Delete</a>
-                </td>
-              </tr>`
-          })
-          $('table tbody').html(html)
-        })
-
-        .fail(function (jqXHR, textStatus) {
-          alert("Request failed: " + textStatus);
-        });
-    }
-  </script>
+  <!-- bootstrap -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="./javascripts/script.js"></script>
 </body>
 
 </html>
