@@ -28,7 +28,6 @@
 
           <!-- modal body -->
           <div class="modal-body">
-
             <form id="addForm">
               <div class="row">
                 <div class="col-2">
@@ -107,32 +106,32 @@
               </div>
             </form>
           </div>
-          
+
           <!-- footer modal -->
           <div class="modal-footer btn-add">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
             <button type="submit" id="submit-data" class="btn btn-primary btn-save" dataid=""
               data-dismiss="modal">Save</button>
           </div>
-        </div> <!-- modal content-->
+
+        </div>
       </div>
     </div>
     <!-- Add Modal End -->
 
-    <!-- Edit Modal Start-->
+    <!-- Edit Modal-->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document" aria-labelledby="myExtraLargeModalLabel"
         aria-hidden="true">
         <div class="modal-content">
-
+          <!-- Modal header-->
           <div class="modal-header">
             <h5 class="modal-title" id="editModalLabel" text-align:center>Edit Data</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div> <!-- Modal header-->
-
-
+          </div> 
+          <!-- modal body edit -->
           <div class="modal-body">
             <form id="editForm">
               <div class="row">
@@ -220,7 +219,7 @@
                     <select class="custom-select custom-select" id="editBoolean" class="form-control" name="boolean">
                       <!-- Diisi dengan menggunakan data-edit -->
                     </select>
-
+                    
                   </div>
                 </div>
               </div>
@@ -232,7 +231,8 @@
             <button type="submit" id="edit-data" class="btn btn-primary btn-change" data-dismiss="modal">Save
               change</button>
           </div>
-        </div> <!-- modal content-->
+
+        </div>
       </div>
     </div>
     <!-- Edit Modal End -->
@@ -336,6 +336,7 @@
               </tr>
             </thead>
             <tbody>
+
             </tbody>
           </table>
           <!-- end table -->
