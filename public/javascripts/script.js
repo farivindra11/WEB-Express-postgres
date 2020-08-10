@@ -3,7 +3,19 @@ const API_URL = 'http://localhost:3000/api/'
 
 $(document).ready(() => {
   loadData();
+
+
+  $('.btn-add').on('click', '.btn-save', function () {
+    let string = $('#addString').val();
+    let integer = $('#addInteger').val();
+    let float = $('#addFloat').val();
+    let date = $('#addDate').val();
+    let boolean = $('#addBoolean').val();
+    addData(string, integer, float, date, boolean);
 })
+
+})
+
 
 const loadData = () => {
   $.ajax({
@@ -21,7 +33,8 @@ const loadData = () => {
             <td>${moment(item.date).format('YYYY-MM-DD')}</td>
             <td>${item.boolean}</td>
             <td>
-              <a href="#" class="btn btn-success">Edit</a>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal">Edit</button>
+
               <a href="#" class="btn btn-danger">Delete</a>
             </td>
           </tr>`
@@ -32,4 +45,19 @@ const loadData = () => {
     .fail(function (jqXHR, textStatus) {
       alert("Request failed: " + textStatus);
     });
+}
+
+const addData = (string, integer, float, date, boolean) => {
+  $.ajax({
+      method: "POST",
+      url: `${API_URL}bread`,
+      data: { string, integer, float, date, boolean },
+      dataType: 'json'
+  }).done(() => {
+      loadData();
+  })
+      .fail((err) => {
+          console.log("gagal-add")
+      });
+  $('#addForm').trigger('reset');
 }

@@ -7,16 +7,13 @@ module.exports = (db) => {    //pool = db
 
   router.get('/', function (req, res, next) {
     db.query('SELECT * FROM bread ORDER BY id ASC', (err, data) => {     //pool = db
-    if (err) return res.status(500).json({err})
-      res.json(data.rows)
-    })
-  });
+        if (err) return res.status(500).json({err})
+          res.json(data.rows)
+        })
+  })
 
   // //ADD
   router.post('/', function (req, res, next) {
-    // console.log(req.body.integer);
-    // let value = [req.body.string, Number(req.body.integer), parseFloat(req.body.float), Date(req.body.date), Boolean(req.body.boolean)]
-    // console.log(value);
     db.query('INSERT INTO bread (string, integer, float, date, boolean) VALUES ($1, $2, $3, $4, $5)', 
     [req.body.string, Number(req.body.integer), parseFloat(req.body.float), req.body.date, req.body.boolean], (err, data) => { 
     if (err) return res.status(500).json({err})
@@ -44,3 +41,11 @@ module.exports = (db) => {    //pool = db
 
   return router;
 }
+
+
+
+
+// db.query('SELECT * FROM bread ORDER BY id ASC', (err, data) => {     //pool = db
+//   if (err) return res.status(500).json({err})
+//     res.json(data.rows)
+//   })
