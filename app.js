@@ -13,7 +13,6 @@ const pool = new Pool({
   port: 5432,
 })
 
-
 var indexRouter = require('./routes/index')(pool);
 var usersRouter = require('./routes/users');
 
