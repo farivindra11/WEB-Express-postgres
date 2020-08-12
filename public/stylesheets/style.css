@@ -32,3 +32,8 @@ body {
   border-radius: 20px;
   background: #fff;
 }
+
+.form-check-label{
+  padding-left: 10px;
+  padding-top: 10px;
+}

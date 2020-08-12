@@ -1,5 +1,4 @@
 <html>
-
 <head>
   <title>Express</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -8,7 +7,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script src="https://momentjs.com/downloads/moment.js"></script>
 </head>
-
 <body>
   <!-- container -->
   <div class="container">
@@ -17,15 +15,13 @@
       <div class="modal-dialog modal-lg modal-dialog-centered" role="document" aria-labelledby="myExtraLargeModalLabel"
         aria-hidden="true">
         <div class="modal-content">
-
           <!-- Modal header-->
           <div class="modal-header">
             <h5 class="modal-title" id="addModalLabel" text-align:center>Add New Data</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div> 
-
+          </div>
           <!-- modal body -->
           <div class="modal-body">
             <form id="addForm">
@@ -106,14 +102,12 @@
               </div>
             </form>
           </div>
-
           <!-- footer modal -->
           <div class="modal-footer btn-add">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <button type="submit" id="submit-data" class="btn btn-primary btn-save" dataid=""
               data-dismiss="modal">Save</button>
           </div>
-
         </div>
       </div>
     </div>
@@ -130,7 +124,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div> 
+          </div>
           <!-- modal body edit -->
           <div class="modal-body">
             <form id="editForm">
@@ -217,105 +211,147 @@
                   <div class="form-group">
 
                     <select class="custom-select custom-select" id="editBoolean" class="form-control" name="boolean">
-                      <!-- Diisi dengan menggunakan data-edit -->
+                      <!-- jquery -->
                     </select>
-                    
+
                   </div>
                 </div>
               </div>
             </form>
           </div>
-
+          <!-- footer edit modal -->
           <div class="modal-footer btn-edit">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <button type="submit" id="edit-data" class="btn btn-primary btn-change" data-dismiss="modal">Save
-              change</button>
+            </button>
           </div>
-
         </div>
       </div>
     </div>
     <!-- Edit Modal End -->
 
-
     <div class="card">
       <div class="card-body">
         <h1 class="card-title">BREAD(Browse, Read, Edit, Add, Delete)</h1>
         <h3 class="card-title">Filters</h3>
-
-        <!-- form -->
-        <form>
-          <div class="form-group row">
-            <label for="id" class="col-sm-2 col-form-label">
-              <input class="form-check-input" type="checkbox" value="" id="id">
-              ID
-            </label>
-            <div class="col-sm-10">
-              <input type="number" name="id" class="form-control" id="id" placeholder="ID">
+        <!-- Form Search -->
+        <form action="" method="GET" id="searchForm">
+          <input type="hidden" id="page" name="page" value="1">
+          <div class="row">
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" name="checkId" type="checkbox" id="cId">
+                <label class="form-check-label" name="checkId" for="checkId">
+                  ID
+                </label>
+              </div>
+            </div>
+            <div class="col-10">
+              <div class="form-group">
+                <input type="number" name="id" class="form-control" id="id" placeholder="ID">
+              </div>
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="String" class="col-sm-2 col-form-label">
-              <input class="form-check-input" type="checkbox" value="" id="String">
-              String
-            </label>
-            <div class="col-sm-10">
-              <input type="text" name="string" class="form-control" id="String" placeholder="String">
+          <div class="row">
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" name="checkString" type="checkbox" id="cString">
+                <label class="form-check-label" name="checkString" for="checkString">
+                  String
+                </label>
+              </div>
+            </div>
+            <div class="col-10">
+              <div class="form-group">
+                <input type="text" name="string" class="form-control" id="string" placeholder="String">
+              </div>
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="Integer" class="col-sm-2 col-form-label">
-              <input class="form-check-input" type="checkbox" value="" id="Integer">
-              Integer
-            </label>
-            <div class="col-sm-10">
-              <input type="number" name="integer" class="form-control" id="integer" placeholder="Integer">
+          <div class="row">
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="checkInteger" id="cInteger">
+                <label class="form-check-label" for="integer">
+                  Integer
+                </label>
+              </div>
+            </div>
+            <div class="col-10">
+              <div class="form-group">
+                <input type="number" class="form-control" id="integer" name="integer" placeholder="Integer">
+              </div>
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="Float" class="col-sm-2 col-form-label">
-              <input class="form-check-input" type="checkbox" value="" id="Float">
-              Float
-            </label>
-            <div class="col-sm-10">
-              <input type="text" name="float" class="form-control" id="Float" placeholder="Float">
+          <div class="row">
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="checkFloat" id="cFloat">
+                <label class="form-check-label" for="checkFloat">
+                  Float
+                </label>
+              </div>
+            </div>
+            <div class="col-10">
+              <div class="form-group">
+                <input type="number" class="form-control" step="0.01" id="float" name="float" placeholder="Float">
+              </div>
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="Date" class="col-sm-2 col-form-label">
-              <input class="form-check-input" type="checkbox" value="" id="Date">
-              Date
-            </label>
-            <div class="col-sm-2">
-              <input type="date" name="startDate" class="form-control" id="Date" placeholder="start date">
-              <h6>to</h6>
-              <input type="date" name="endDate" class="form-control" id="Date" placeholder="end date">
+          <div class="row">
+            <div class="col-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="checkDate" id="cDate">
+                <label class="form-check-label" for="date">
+                  Date
+                </label>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <input type="date" class="form-control" name="startDate" id="startDate" placeholder="masukan date">
+              </div>
+            </div>
+            <div class="w-100"></div>
+            <p class="col offset-2">to</p>
+            <div class="w-100"></div>
+            <div class="col-3 offset-2">
+              <div class="form-group">
+                <input type="date" class="form-control" name="endDate" id="endDate" placeholder="masukan date">
+              </div>
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="Boolean" class="col-sm-2 col-form-label">
-              <input class="form-check-input" type="checkbox" value="" id="Boolean">Boolean</label>
-            <div class="col-sm-10">
-              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                <option selected disabled>Choose the boolean...</option>
-                <option value="1">True</option>
-                <option value="2">False</option>
-              </select>
+          <div class="row">
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="checkBoolean" id="cBoolean">
+                <label class="form-check-label" for="boolean">
+                  Boolean
+                </label>
+              </div>
+            </div>
+            <div class="col-10">
+              <div class="form-group">
+                <select name="boolean" id="boolean" class="form-control">
+                  <option selected disabled> choose the boolean</option>
+                  <option name="bool" class="form-control" value="true">True</option>
+                  <option name="bool" class="form-control" value="false">False</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-          </div>
+          <button type="submit" class="btn btn-primary" id="search-btn">Search</button>
+          <a href="/">
+            <button type="button" class="btn btn-dark " id="reset">Reset</button>
+          </a>
         </form>
         <!-- end form -->
+        <br>
       </div>
     </div>
 
@@ -336,25 +372,21 @@
               </tr>
             </thead>
             <tbody>
-
+              <!-- jquery -->
             </tbody>
           </table>
           <!-- end table -->
 
           <!-- pagination -->
-          <div class="pagination">
+          <nav aria-label="Page navigation example mt-2">
             <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              <!-- jquery -->
             </ul>
-          </div>
+          </nav>
           <!-- end pagination -->
 
-           <div class="add">
-             <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addModal">Add</a>
+          <div class="add">
+            <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#addModal">Add</a>
           </div>
 
         </div>
@@ -369,5 +401,4 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="./javascripts/script.js"></script>
 </body>
-
 </html>
